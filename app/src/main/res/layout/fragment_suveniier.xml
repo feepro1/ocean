@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentCL"
+    android:layout_width="match_parent"
+    android:layout_height="350dp"
+    android:layout_margin="5dp"
+    android:background="@drawable/shape_background_gradient"
+    android:orientation="horizontal"
+    app:layout_constraintDimensionRatio="4:3"
+    app:layout_optimizationLevel="ratio">
+
+    <ImageView
+        android:id="@+id/roundImageView"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        android:src="@drawable/action3"
+        android:visibility="visible"
+        app:layout_constraintDimensionRatio=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_optimizationLevel="ratio" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#3756C8"
+        android:fontFamily="@font/futura_lt"
+        android:gravity="center"
+        android:text="Сувенир какой-то"
+        android:textAlignment="center"
+        android:textColor="#E8E8E8"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/roundImageView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/course_instructor2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_avatar_placeholder"
+        android:foreground="@drawable/avatar_outline"
+        android:importantForAccessibility="no"
+
+        app:layout_constraintBottom_toBottomOf="@+id/roundImageView"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/roundImageView"
+        app:srcCompat="@drawable/ic_ocean" />
+</androidx.constraintlayout.widget.ConstraintLayout>
