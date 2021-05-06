@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="125dp"
     android:layout_marginTop="15dp"
-    android:layout_marginBottom="15dp">
+    android:layout_marginBottom="15dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/leftCard"
@@ -33,7 +34,7 @@
             app:type="round" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/name_left"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
@@ -44,7 +45,7 @@
             android:shadowDx="1"
             android:shadowDy="1"
             android:shadowRadius="2"
-            android:text="Шоу воды Шоу воды Шоу воды"
+            android:text="@{seans.name}"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
@@ -55,7 +56,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/date_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -65,7 +66,7 @@
             android:shadowDx="1"
             android:shadowDy="1"
             android:shadowRadius="2"
-            android:text="05.06"
+            android:text="@{seans.date}"
             android:textColor="#EF5959"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -73,7 +74,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/time_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -83,7 +84,7 @@
             android:shadowDx="1"
             android:shadowDy="1"
             android:shadowRadius="2"
-            android:text="Начало 15:00"
+            android:text="@{seans.times}"
             android:textColor="#EF5959"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -115,7 +116,7 @@
             app:type="round" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/name_right"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
@@ -126,18 +127,18 @@
             android:shadowDx="1"
             android:shadowDy="1"
             android:shadowRadius="2"
-            android:text="Шоу воды Шоу воды Шоу воды"
+            android:text="@{seans.name}"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/textView4"
+            app:layout_constraintBottom_toTopOf="@+id/date_right"
             app:layout_constraintEnd_toStartOf="@+id/roundImageView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/date_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -146,7 +147,7 @@
             android:shadowDx="1"
             android:shadowDy="1"
             android:shadowRadius="2"
-            android:text="05.06"
+            android:text="@{seans.date}"
             android:textColor="#EF5959"
             android:textSize="24dp"
             android:textStyle="bold"
@@ -154,7 +155,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/time_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -163,7 +164,7 @@
             android:shadowDx="1"
             android:shadowDy="1"
             android:shadowRadius="2"
-            android:text="Начало 18:00"
+            android:text="@{seans.times}"
             android:textColor="#EF5959"
             android:textSize="24dp"
             android:textStyle="bold"

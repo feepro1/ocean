@@ -1,9 +1,10 @@
 package com.okeanarium.ocean
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import com.okeanarium.ocean.database_server.AppDatabase
+import com.okeanarium.ocean.database_server.InitDatabase
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
 class MainActivity : AppCompatActivity() {
@@ -13,7 +14,15 @@ class MainActivity : AppCompatActivity() {
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
+        val db = AppDatabase.getAppDataBase(this)!!
+
+        InitDatabase().InitDatabase(db)
         val bottom_bar = findViewById<AnimatedBottomBar>(R.id.bottom_bar)
+
+
+
+
+
         bottom_bar.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener {
             override fun onTabSelected(
                 lastIndex: Int,
@@ -23,7 +32,7 @@ class MainActivity : AppCompatActivity() {
             ) {
                 when (newTab.id) {
                     R.id.first -> {
-                        val fragment = SeansFragment()
+                        val fragment = SeansFragment(db)
                         supportFragmentManager.beginTransaction().replace(R.id.frame, fragment, fragment.javaClass.simpleName)
                             .commit()
                     }
@@ -41,5 +50,12 @@ class MainActivity : AppCompatActivity() {
 
             }
         })
+    }
+
+
+    public fun openBusket(){
+        val fragment = BasketFragment();
+        supportFragmentManager.beginTransaction().replace(R.id.frame, fragment, fragment.javaClass.simpleName)
+            .commit()
     }
 }
