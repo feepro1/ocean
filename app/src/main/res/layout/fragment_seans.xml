@@ -19,7 +19,7 @@
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="gone">
+        tools:visibility="visible">
 
         <org.raphets.roundimageview.RoundImageView
             android:id="@+id/roundImageView2"
@@ -45,12 +45,11 @@
             android:shadowDx="1"
             android:shadowDy="1"
             android:shadowRadius="2"
-            android:text="@{seans.name}"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/textView4"
+            app:layout_constraintBottom_toTopOf="@+id/time_left"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/roundImageView2"
             app:layout_constraintTop_toTopOf="parent" />
@@ -94,6 +93,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rightCard"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="125dp"
         android:layout_marginEnd="32dp"
@@ -107,7 +107,6 @@
             android:layout_width="125dp"
             android:layout_height="125dp"
             android:src="@drawable/action3"
-            android:visibility="visible"
             app:border_color="@android:color/white"
             app:border_width="0dp"
             app:layout_constraintEnd_toEndOf="parent"

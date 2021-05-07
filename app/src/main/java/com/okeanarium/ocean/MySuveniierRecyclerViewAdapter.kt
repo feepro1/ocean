@@ -1,24 +1,24 @@
 package com.okeanarium.ocean
 
-import android.app.ActionBar
 import android.content.Context
-import android.text.Layout
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-
+import androidx.recyclerview.widget.RecyclerView
+import com.okeanarium.ocean.database_server.Suvenier
 import com.okeanarium.ocean.dummy.DummyContent.DummyItem
+import com.squareup.picasso.Picasso
 
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem].
  * TODO: Replace the implementation with code for your data type.
  */
 class MySuveniierRecyclerViewAdapter(
-        private val values: List<DummyItem>,
-        private val context: Context
+    private val values: List<Suvenier>,
+    private val context: Context
 )
     : RecyclerView.Adapter<MySuveniierRecyclerViewAdapter.ViewHolder>() {
 
@@ -34,18 +34,16 @@ class MySuveniierRecyclerViewAdapter(
           holder.parentCL.layoutParams.height = (340*context.resources.displayMetrics.density).toInt()
         else
           holder.parentCL.layoutParams.height = (370*context.resources.displayMetrics.density).toInt()
-//        holder.idView.text = item.id
-//        holder.contentView.text = item.content
+
+        Picasso.with(context).load(item.imageURL).into(holder.avatar);
+        holder.name.text = item.name;
     }
 
     override fun getItemCount(): Int = values.size
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
        val parentCL: ConstraintLayout = view.findViewById(R.id.parentCL)
-//        val contentView: TextView = view.findViewById(R.id.content)
-//
-//        override fun toString(): String {
-//            return super.toString() + " '" + contentView.text + "'"
-//        }
+        val avatar: ImageView = view.findViewById(R.id.avatar)
+        val name: TextView = view.findViewById(R.id.name)
     }
 }

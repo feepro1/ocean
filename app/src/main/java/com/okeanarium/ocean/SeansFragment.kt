@@ -10,23 +10,22 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.okeanarium.ocean.database_server.AppDatabase
 import com.okeanarium.ocean.database_server.Seans
-import com.okeanarium.ocean.database_server.SeansDao
 
 /**
  * A fragment representing a list of Items.
  */
-class SeansFragment(db: AppDatabase) : Fragment() {
+class SeansFragment(val db: AppDatabase) : Fragment() {
 
     private var columnCount = 1
-    var seans:List<Seans>?= null
+    lateinit var seans : List<Seans>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
             columnCount = 1
         }
-        val seansDao : SeansDao?= null
-        seans = seansDao?.getSeans();
+        seans = db.seansDao().getSeans()
     }
 
     override fun onCreateView(
@@ -42,7 +41,7 @@ class SeansFragment(db: AppDatabase) : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MySeansRecyclerViewAdapter(seans)
+                adapter = MySeansRecyclerViewAdapter(seans,context)
             }
         }
         return view

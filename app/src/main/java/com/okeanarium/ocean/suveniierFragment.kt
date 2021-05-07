@@ -8,22 +8,24 @@ import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.okeanarium.ocean.dummy.DummyContent
+import com.okeanarium.ocean.database_server.AppDatabase
+import com.okeanarium.ocean.database_server.Suvenier
 
 /**
  * A fragment representing a list of Items.
  */
-class suveniierFragment : Fragment() {
+class suveniierFragment(val db: AppDatabase) : Fragment() {
 
     private var columnCount = 2
+    lateinit var suv : List<Suvenier>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
+            columnCount = 2
         }
-
+        suv = db.suvenierDao().getSuvenier()
     }
 
     override fun onCreateView(
@@ -45,7 +47,7 @@ class suveniierFragment : Fragment() {
                         StaggeredGridLayoutManager.VERTICAL
                     )
                 }
-                adapter = MySuveniierRecyclerViewAdapter(DummyContent.ITEMS, context)
+                adapter = MySuveniierRecyclerViewAdapter(suv, context)
             }
             view.findViewById<ImageButton>(R.id.basket_open_btn).setOnClickListener {
                 (activity as MainActivity?)?.openBusket()
@@ -58,16 +60,16 @@ class suveniierFragment : Fragment() {
 
     companion object {
 
-        // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
-
-        // TODO: Customize parameter initialization
-        @JvmStatic
-        fun newInstance(columnCount: Int) =
-                suveniierFragment().apply {
-                    arguments = Bundle().apply {
-                        putInt(ARG_COLUMN_COUNT, columnCount)
-                    }
-                }
+//        // TODO: Customize parameter argument names
+//        const val ARG_COLUMN_COUNT = "column-count"
+//
+//        // TODO: Customize parameter initialization
+//        @JvmStatic
+//        fun newInstance(columnCount: Int) =
+//                suveniierFragment().apply {
+//                    arguments = Bundle().apply {
+//                        putInt(ARG_COLUMN_COUNT, columnCount)
+//                    }
+//                }
     }
 }

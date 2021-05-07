@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                             .commit()
                     }
                     R.id.second -> {
-                        val fragment = suveniierFragment()
+                        val fragment = suveniierFragment(db)
                         supportFragmentManager.beginTransaction().replace(R.id.frame, fragment, fragment.javaClass.simpleName)
                             .commit()
                     }

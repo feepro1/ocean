@@ -12,11 +12,11 @@
     app:layout_optimizationLevel="ratio">
 
     <ImageView
-        android:id="@+id/roundImageView"
+        android:id="@+id/avatar"
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:cropToPadding="false"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
         android:src="@drawable/action3"
         android:visibility="visible"
         app:layout_constraintDimensionRatio=""
@@ -26,7 +26,7 @@
         app:layout_optimizationLevel="ratio" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#3756C8"
@@ -38,10 +38,8 @@
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/roundImageView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/avatar" />
 
     <ImageView
         android:id="@+id/course_instructor2"
@@ -51,10 +49,9 @@
         android:foreground="@drawable/avatar_outline"
         android:importantForAccessibility="no"
 
-        app:layout_constraintBottom_toBottomOf="@+id/roundImageView"
-
+        app:layout_constraintBottom_toBottomOf="@+id/avatar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/roundImageView"
+        app:layout_constraintTop_toBottomOf="@+id/avatar"
         app:srcCompat="@drawable/ic_ocean" />
 </androidx.constraintlayout.widget.ConstraintLayout>
