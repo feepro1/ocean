@@ -9,4 +9,5 @@ data class Suvenier(
         val id: Int? = null,
         val name: String,
         val description: String,
-        val imageURL : String)
+        val imageURL : String,
+        val price:Int = (700..1500).random())

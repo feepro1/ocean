@@ -7,7 +7,7 @@
     android:background="@drawable/shape_background_gradient">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/backBtn"
         android:layout_width="42dp"
         android:layout_height="42dp"
         android:src="@drawable/abc_vector_test"
@@ -42,11 +42,29 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="100dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/shape_background_gradient"
         app:layoutManager="LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buy_btn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".BasketFragment"
-        tools:listitem="@layout/fragment_basket" />
+        tools:listitem="@layout/fragment_basket">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/buy_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@drawable/inset_divider"
+        android:text="Купить"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

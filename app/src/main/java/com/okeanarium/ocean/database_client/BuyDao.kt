@@ -11,6 +11,9 @@ interface BuyDao {
     @Update
     fun updateBuyItem(buyItem: BuyItem)
 
+    @Query("DELETE FROM BuyItem")
+    fun deleteBuyAllItem()
+
     @Query("DELETE FROM BuyItem where suvId = :suvId")
     fun deleteBuyItem(suvId:Int)
 

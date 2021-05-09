@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.okeanarium.ocean.database_server.Seans
 import com.okeanarium.ocean.dummy.DummyContent.DummyItem
@@ -18,7 +19,8 @@ import com.squareup.picasso.Picasso
  */
 class MySeansRecyclerViewAdapter(
     private val values: List<Seans>,
-    val context:Context
+    val context: Context,
+    val supportFragmentManager: FragmentManager
 ) : RecyclerView.Adapter<MySeansRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,6 +36,12 @@ class MySeansRecyclerViewAdapter(
             holder.time_left.text = item.times
             holder.date_left.text = item.date
 
+
+            holder.leftCard.setOnClickListener {
+                val fragment = RaspisanieFragment()
+                supportFragmentManager.beginTransaction().replace(R.id.frame, fragment, fragment.javaClass.simpleName)
+                    .commit()
+            }
             Picasso.with(context).load(item.imageURL).into(holder.image_left);
             holder.leftCard.visibility = View.VISIBLE
             holder.rightCard.visibility = View.GONE
@@ -42,7 +50,11 @@ class MySeansRecyclerViewAdapter(
             holder.time_right.text = item.times
             holder.date_right.text = item.date
 
-
+            holder.rightCard.setOnClickListener {
+                val fragment = RaspisanieFragment()
+                supportFragmentManager.beginTransaction().replace(R.id.frame, fragment, fragment.javaClass.simpleName)
+                    .commit()
+            }
             Picasso.with(context).load(item.imageURL).into(holder.image_right);
             //Picasso.get().load(item.imageURL).into(holder.image_right);
             holder.leftCard.visibility = View.GONE

@@ -1,7 +1,6 @@
 package com.okeanarium.ocean
 
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.okeanarium.ocean.database_server.Suvenier
 import com.okeanarium.ocean.dummy.DummyContent.DummyItem
 import com.squareup.picasso.Picasso
-import kotlin.random.Random
 
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem].
@@ -27,36 +25,64 @@ class MyBasketRecyclerViewAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.fragment_suveniier, parent, false)
+            .inflate(R.layout.fragment_seans, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        if((position+1 )%6== 0 || position == 0)
-            holder.parentCL.layoutParams.height = (340*context.resources.displayMetrics.density).toInt()
-        else
-            holder.parentCL.layoutParams.height = (370*context.resources.displayMetrics.density).toInt()
 
-        Picasso.with(context).load(item.imageURL).into(holder.avatar);
-        holder.name.text = item.name;
-        val rnd = Random
-        val color = Color.argb(180, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
-        holder.name.setBackgroundColor(color)
+        if(position%2 == 0){
+            holder.name_left.text = item.name
+            holder.time_left.text = ""
+            holder.date_left.text = "Цена: ${item.price}"
 
-        holder.parentCL.setOnClickListener {
-            val fragment = BuyFragment(item)
-            supportFragmentManager.beginTransaction().replace(R.id.frame, fragment, fragment.javaClass.simpleName)
-                .commit()
+            Picasso.with(context).load(item.imageURL).into(holder.image_left);
+            holder.leftCard.visibility = View.VISIBLE
+            holder.rightCard.visibility = View.GONE
+            holder.leftCard.setOnClickListener {
+                val fragment = BuyFragment(item)
+                supportFragmentManager.beginTransaction().replace(R.id.frame, fragment, fragment.javaClass.simpleName)
+                    .commit()
 
+            }
+        }else{
+            holder.name_right.text = item.name
+            holder.time_right.text = ""
+            holder.date_right.text = "Цена: ${item.price}"
+
+
+            Picasso.with(context).load(item.imageURL).into(holder.image_right);
+            //Picasso.get().load(item.imageURL).into(holder.image_right);
+            holder.rightCard.setOnClickListener {
+                val fragment = BuyFragment(item)
+                supportFragmentManager.beginTransaction().replace(R.id.frame, fragment, fragment.javaClass.simpleName)
+                    .commit()
+
+            }
+            holder.leftCard.visibility = View.GONE
+            holder.rightCard.visibility = View.VISIBLE
         }
+
+
+
     }
 
     override fun getItemCount(): Int = values.size
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val parentCL: ConstraintLayout = view.findViewById(R.id.parentCL)
-        val avatar: ImageView = view.findViewById(R.id.avatar)
-        val name: TextView = view.findViewById(R.id.name)
+        val leftCard: ConstraintLayout = view.findViewById(R.id.leftCard)
+
+        val name_left: TextView = view.findViewById(R.id.name_left)
+        val time_left: TextView = view.findViewById(R.id.time_left)
+        val date_left: TextView = view.findViewById(R.id.date_left)
+        val image_left: ImageView = view.findViewById(R.id.roundImageView2)
+
+        val rightCard: ConstraintLayout = view.findViewById(R.id.rightCard)
+        val name_right: TextView = view.findViewById(R.id.name_right)
+        val time_right: TextView = view.findViewById(R.id.time_right)
+        val date_right: TextView = view.findViewById(R.id.date_right)
+        val image_right: ImageView = view.findViewById(R.id.roundImageView)
+
     }
 }

@@ -68,7 +68,10 @@ class BuyFragment(val item: Suvenier) : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_buy, container, false)
+        val view = inflater.inflate(R.layout.fragment_buy, container, false)
+
+        view.findViewById<ImageView>(R.id.backBtn3).setOnClickListener { (activity as MainActivity?)?.openSuvenier() }
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

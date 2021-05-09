@@ -37,14 +37,12 @@ class MainActivity : AppCompatActivity() {
             ) {
                 when (newTab.id) {
                     R.id.first -> {
-                        val fragment = SeansFragment(servDB)
+                        val fragment = SeansFragment(servDB, supportFragmentManager)
                         supportFragmentManager.beginTransaction().replace(R.id.frame, fragment, fragment.javaClass.simpleName)
                             .commit()
                     }
                     R.id.second -> {
-                        val fragment = suveniierFragment(servDB,supportFragmentManager)
-                        supportFragmentManager.beginTransaction().replace(R.id.frame, fragment, fragment.javaClass.simpleName)
-                            .commit()
+                        openSuvenier()
                     }
                     R.id.third -> {
                         val fragment = AboutUs()
@@ -64,6 +62,18 @@ class MainActivity : AppCompatActivity() {
 
     public fun openBusket(){
         val fragment = BasketFragment(clientDB,servDB,supportFragmentManager);
+        supportFragmentManager.beginTransaction().replace(R.id.frame, fragment, fragment.javaClass.simpleName)
+            .commit()
+    }
+
+    fun openSuvenier() {
+        val fragment = suveniierFragment(servDB,supportFragmentManager)
+        supportFragmentManager.beginTransaction().replace(R.id.frame, fragment, fragment.javaClass.simpleName)
+                .commit()
+    }
+
+    fun openSeans() {
+        val fragment = SeansFragment(servDB,supportFragmentManager)
         supportFragmentManager.beginTransaction().replace(R.id.frame, fragment, fragment.javaClass.simpleName)
             .commit()
     }

@@ -72,22 +72,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="ccc" />
 
-    <TextView
-        android:id="@+id/basket_cost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/futura_lt"
-        android:shadowColor="#000000"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="2"
-        android:text="@{seans.times}"
-        android:textColor="#EF5959"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/basket_roundImageView"
-        tools:text="bbb" />
 </androidx.constraintlayout.widget.ConstraintLayout>
