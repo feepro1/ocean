@@ -3,21 +3,26 @@ package com.okeanarium.ocean
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import com.okeanarium.ocean.database_client.ClientDatabase
 import com.okeanarium.ocean.database_server.AppDatabase
 import com.okeanarium.ocean.database_server.InitDatabase
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
 class MainActivity : AppCompatActivity() {
+    lateinit var servDB :AppDatabase
+    lateinit var clientDB :ClientDatabase
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
-        val db = AppDatabase.getAppDataBase(this)!!
-
-        InitDatabase().InitDatabase(db)
+        servDB = AppDatabase.getAppDataBase(this)!!
+        clientDB = ClientDatabase.getAppDataBase(this)!!
+        InitDatabase().InitDatabase(servDB)
         val bottom_bar = findViewById<AnimatedBottomBar>(R.id.bottom_bar)
+
 
 
 
@@ -32,12 +37,12 @@ class MainActivity : AppCompatActivity() {
             ) {
                 when (newTab.id) {
                     R.id.first -> {
-                        val fragment = SeansFragment(db)
+                        val fragment = SeansFragment(servDB)
                         supportFragmentManager.beginTransaction().replace(R.id.frame, fragment, fragment.javaClass.simpleName)
                             .commit()
                     }
                     R.id.second -> {
-                        val fragment = suveniierFragment(db)
+                        val fragment = suveniierFragment(servDB,supportFragmentManager)
                         supportFragmentManager.beginTransaction().replace(R.id.frame, fragment, fragment.javaClass.simpleName)
                             .commit()
                     }
@@ -48,13 +53,17 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
+
             }
         })
+        Thread.sleep(1000)
+        bottom_bar.selectTabById( R.id.third,true)
+
     }
 
 
     public fun openBusket(){
-        val fragment = BasketFragment();
+        val fragment = BasketFragment(clientDB,servDB,supportFragmentManager);
         supportFragmentManager.beginTransaction().replace(R.id.frame, fragment, fragment.javaClass.simpleName)
             .commit()
     }

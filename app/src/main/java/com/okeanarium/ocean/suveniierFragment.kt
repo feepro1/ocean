@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.okeanarium.ocean.database_server.AppDatabase
@@ -14,7 +15,7 @@ import com.okeanarium.ocean.database_server.Suvenier
 /**
  * A fragment representing a list of Items.
  */
-class suveniierFragment(val db: AppDatabase) : Fragment() {
+class  suveniierFragment(val db: AppDatabase, val supportFragmentManager: FragmentManager) : Fragment() {
 
     private var columnCount = 2
     lateinit var suv : List<Suvenier>
@@ -47,7 +48,7 @@ class suveniierFragment(val db: AppDatabase) : Fragment() {
                         StaggeredGridLayoutManager.VERTICAL
                     )
                 }
-                adapter = MySuveniierRecyclerViewAdapter(suv, context)
+                adapter = MySuveniierRecyclerViewAdapter(suv.shuffled(), context,supportFragmentManager)
             }
             view.findViewById<ImageButton>(R.id.basket_open_btn).setOnClickListener {
                 (activity as MainActivity?)?.openBusket()

@@ -16,4 +16,7 @@ interface SuvenierDao {
 
     @Query("SELECT * FROM Suvenier")
     fun getSuvenier(): List<Suvenier>
+
+    @Query("SELECT * FROM Suvenier where id = :id")
+    fun getSuvenierById(id:Int): Suvenier
 }
